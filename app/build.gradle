@@ -60,10 +60,12 @@ dependencies {
     implementation Network.retrofit
     //Okhttp
     implementation Network.okHttp
+    implementation Network.loggingInterceptor
     //Retrofit Converter for Moshi
-    implementation Converters.moshiConverter
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     //Room DB
     implementation AndroidX.room
+    implementation AndroidX.roomKtx
     kapt AndroidX.roomAnnotationProcessor
     //RX Java + RX Android
     implementation Reactive.rxAndroid

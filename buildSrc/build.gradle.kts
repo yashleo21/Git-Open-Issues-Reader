@@ -3,5 +3,5 @@ plugins {
 }
 
 @Suppress("JcenterRepositoryObsolete") repositories {
-    jcenter()
+    mavenCentral()
 }

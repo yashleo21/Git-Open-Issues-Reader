@@ -11,7 +11,7 @@ object Versions {
     val jUnit = "4.13.2"
     val jUnit_androidX = "1.1.3"
     val gradle = "4.2.1"
-    val moshi_converter_version = " 2.9.0"
+    val moshi_converter_version = "2.9.0"
     val lifecycle_version = "2.4.0-alpha02"
     val fragment_version = "1.3.5"
     val dagger_version = "2.38.1"
@@ -35,6 +35,7 @@ object AndroidX {
     val fragment = "androidx.fragment:fragment-ktx:$fragment_version"
     val room = "androidx.room:room-runtime:${Versions.room_version}"
     val roomAnnotationProcessor = "androidx.room:room-compiler:${Versions.room_version}"
+    val roomKtx = "androidx.room:room-ktx:${Versions.room_version}"
 }
 
 object GradleDepndency {
@@ -64,6 +65,7 @@ object ImageLoading {
 object Network {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
     val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp_version}"
+    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp_version}"
 }
 
 object Moshi {
