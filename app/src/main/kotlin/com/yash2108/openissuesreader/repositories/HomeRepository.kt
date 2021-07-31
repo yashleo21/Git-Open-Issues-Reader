@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class HomeRepository constructor(private val localDataSource: HomeDataSource,
-                                         private val remoteDataSource: HomeDataSource,
-                                         private val dao: HomeDao) {
+                                 private val remoteDataSource: HomeDataSource,
+                                 private val dao: HomeDao) {
 
     private val TAG = HomeRepository::class.java.simpleName
 
@@ -44,4 +44,5 @@ class HomeRepository constructor(private val localDataSource: HomeDataSource,
         Log.d(TAG, "Found data: ${it.size}")
         return ResultUI.success(it)
     }
+
 }

@@ -40,9 +40,4 @@ class HomeScreenModule {
         return HomeRemoteDataSourceImpl(client)
     }
 
-    @Provides
-    @FragmentScoped
-    fun providesCallback(@Named("homeFragment") fragment: Context): HomeAdapter.Callback {
-        return fragment as HomeAdapter.Callback
-    }
 }
