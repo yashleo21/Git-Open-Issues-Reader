@@ -1,9 +1,8 @@
 package com.yash2108.openissuesreader.application
 
 import android.app.Application
-import com.yash2108.openissuesreader.di.modules.AppModule
 import com.yash2108.openissuesreader.di.components.ApplicationComponent
-import com.yash2108.openissuesreader.application.di.DaggerApplicationComponent
+import com.yash2108.openissuesreader.di.components.DaggerApplicationComponent
 
 class MyApplication: Application() {
 
@@ -15,7 +14,7 @@ class MyApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerApplicationComponent.builder().appModule(AppModule(this)).build()
+        appComponent = DaggerApplicationComponent.factory().create(this)
     }
 
     companion object {

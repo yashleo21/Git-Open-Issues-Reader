@@ -3,9 +3,8 @@ package com.yash2108.openissuesreader.database.converters
 import androidx.room.TypeConverter
 import com.squareup.moshi.Moshi
 import com.yash2108.openissuesreader.application.MyApplication
-import com.yash2108.openissuesreader.database.entity.Home
+import com.yash2108.openissuesreader.database.entity.HomeDataObject
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class Converters @Inject constructor(){
 
@@ -17,15 +16,15 @@ class Converters @Inject constructor(){
     }
 
     @TypeConverter
-    fun fromUserObject(user: Home.User): String {
-        val jsonAdapter = moshi.adapter<Home.User>(Home.User::class.java)
+    fun fromUserObject(user: HomeDataObject.User): String {
+        val jsonAdapter = moshi.adapter<HomeDataObject.User>(HomeDataObject.User::class.java)
 
         return jsonAdapter.toJson(user)
     }
 
     @TypeConverter
-    fun toUserObject(input: String): Home.User {
-        val jsonAdapter = moshi.adapter(Home.User::class.java)
+    fun toUserObject(input: String): HomeDataObject.User {
+        val jsonAdapter = moshi.adapter(HomeDataObject.User::class.java)
 
         return jsonAdapter.fromJson(input)!!
     }

@@ -1,6 +1,7 @@
 package com.yash2108.openissuesreader.di.modules
 
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yash2108.openissuesreader.network.service.RetrofitAPI
 import dagger.Module
 import dagger.Provides
@@ -10,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = arrayOf(OkHttpClientModule::class))
-class RetrofitModule constructor() {
+class RetrofitModule {
 
     @Provides
     @Singleton
@@ -22,15 +23,18 @@ class RetrofitModule constructor() {
                                converterFactory: MoshiConverterFactory) =
         Retrofit.Builder()
             .client(okhttpClient)
-            .baseUrl("https://github.com/")
+            .baseUrl("https://api.github.com/")
             .addConverterFactory(converterFactory)
             .build()
 
     @Provides
     @Singleton
-    fun providesMoshiConverterFactory() = MoshiConverterFactory.create()
+    fun providesMoshiConverterFactory(moshi: Moshi) = MoshiConverterFactory.create(moshi).asLenient()
 
     @Provides
     @Singleton
-    fun providesMoshiInstance(): Moshi = Moshi.Builder().build()
+    fun providesMoshiInstance(): Moshi = Moshi
+        .Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 }

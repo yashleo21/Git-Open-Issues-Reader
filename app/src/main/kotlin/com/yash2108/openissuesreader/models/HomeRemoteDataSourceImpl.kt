@@ -1,20 +1,14 @@
 package com.yash2108.openissuesreader.models
-
-import com.yash2108.openissuesreader.database.entity.Home
+import com.yash2108.openissuesreader.database.entity.HomeDataObject
 import com.yash2108.openissuesreader.network.service.RetrofitAPI
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import org.json.JSONException
-import retrofit2.HttpException
 import retrofit2.Response
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 
-class HomeRemoteDataSourceImpl(val client: RetrofitAPI): HomeDataSource {
+class HomeRemoteDataSourceImpl @Inject constructor(val client: RetrofitAPI): HomeDataSource {
 
-    override suspend fun getData(): ArrayList<Home> {
+    override suspend fun getData(): List<HomeDataObject> {
         return client.getIssuesList()
     }
 

@@ -1,19 +1,20 @@
 package com.yash2108.openissuesreader.repositories
 
+import android.util.Log
 import com.yash2108.openissuesreader.database.dao.HomeDao
-import com.yash2108.openissuesreader.database.entity.Home
+import com.yash2108.openissuesreader.database.entity.HomeDataObject
 import com.yash2108.openissuesreader.models.HomeDataSource
 import com.yash2108.openissuesreader.models.ResultUI
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
-class HomeRepository @Inject constructor(private val localDataSource: HomeDataSource,
+class HomeRepository constructor(private val localDataSource: HomeDataSource,
                                          private val remoteDataSource: HomeDataSource,
                                          private val dao: HomeDao) {
 
+    private val TAG = HomeRepository::class.java.simpleName
 
-    suspend fun getIssuesList(): Flow<ResultUI<ArrayList<Home>>> {
+    suspend fun getIssuesList(): Flow<ResultUI<List<HomeDataObject>>> {
         return flow {
             emit(fetchLocalData())
             emit(ResultUI.loading())
@@ -29,7 +30,8 @@ class HomeRepository @Inject constructor(private val localDataSource: HomeDataSo
         }
     }
 
-    private suspend fun fetchLocalData(): ResultUI<ArrayList<Home>> = localDataSource.getData().let {
+    private suspend fun fetchLocalData(): ResultUI<List<HomeDataObject>> = localDataSource.getData().let {
+        Log.d(TAG, "Found data: ${it.size}")
         return ResultUI.success(it)
     }
 }

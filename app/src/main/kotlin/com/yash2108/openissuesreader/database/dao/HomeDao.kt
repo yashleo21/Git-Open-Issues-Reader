@@ -4,21 +4,20 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.yash2108.openissuesreader.database.Constants
-import com.yash2108.openissuesreader.database.entity.Home
-import kotlinx.coroutines.flow.Flow
+import com.yash2108.openissuesreader.database.entity.HomeDataObject
 
 @Dao
 interface HomeDao {
 
     @Insert
-    suspend fun insert(issueObject: Home)
+    suspend fun insert(issueObject: HomeDataObject)
 
     @Insert
-    suspend fun insertAllRecords(issues: ArrayList<Home>)
+    suspend fun insertAllRecords(issues: List<HomeDataObject>)
 
     @Query("DELETE FROM ${Constants.TABLE_NAME}")
     suspend fun deleteAllRcords()
 
     @Query("SELECT * FROM ${Constants.TABLE_NAME}")
-    fun getAllRecords(): ArrayList<Home>
+    fun getAllRecords(): List<HomeDataObject>
 }

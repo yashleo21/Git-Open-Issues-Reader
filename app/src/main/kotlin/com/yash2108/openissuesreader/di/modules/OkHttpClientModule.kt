@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.yash2108.openissuesreader.network.service.RetrofitAPI
+import com.yash2108.openissuesreader.ui.di.scopes.ApplicationContext
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -14,7 +15,7 @@ import java.io.File
 import javax.inject.Inject
 
 @Module
-class OkHttpClientModule @Inject constructor(val application: Application) {
+class OkHttpClientModule constructor() {
 
     @Provides
     fun providesOkhttpClient(cache: Cache, httpLoggingInterceptor: HttpLoggingInterceptor) =
@@ -28,8 +29,8 @@ class OkHttpClientModule @Inject constructor(val application: Application) {
     fun providesCache(cacheFile: File) = Cache(cacheFile, 10 * 1000 * 1000L)
 
     @Provides
-    fun providesFile(): File {
-        val file = File(application.cacheDir, "HttpCache")
+    fun providesFile(@ApplicationContext context: Context): File {
+        val file = File(context.cacheDir, "HttpCache")
         file.mkdirs()
         return file
     }
