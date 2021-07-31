@@ -1,4 +1,4 @@
-package com.yash2108.openissuesreader.network.di
+package com.yash2108.openissuesreader.di.modules
 
 import android.app.Application
 import android.content.Context

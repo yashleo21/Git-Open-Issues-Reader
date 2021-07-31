@@ -13,9 +13,12 @@ interface HomeDao {
     @Insert
     suspend fun insert(issueObject: Home)
 
+    @Insert
+    suspend fun insertAllRecords(issues: ArrayList<Home>)
+
     @Query("DELETE FROM ${Constants.TABLE_NAME}")
     suspend fun deleteAllRcords()
 
     @Query("SELECT * FROM ${Constants.TABLE_NAME}")
-    fun getAllRecords(): Flow<List<Home>>
+    fun getAllRecords(): ArrayList<Home>
 }

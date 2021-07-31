@@ -1,8 +1,8 @@
 package com.yash2108.openissuesreader.application
 
 import android.app.Application
-import com.yash2108.openissuesreader.application.di.AppModule
-import com.yash2108.openissuesreader.application.di.ApplicationComponent
+import com.yash2108.openissuesreader.di.modules.AppModule
+import com.yash2108.openissuesreader.di.components.ApplicationComponent
 import com.yash2108.openissuesreader.application.di.DaggerApplicationComponent
 
 class MyApplication: Application() {

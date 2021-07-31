@@ -1,7 +1,6 @@
-package com.yash2108.openissuesreader.database.di
+package com.yash2108.openissuesreader.di.modules
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
 import com.yash2108.openissuesreader.database.AppDatabase
 import com.yash2108.openissuesreader.database.Constants

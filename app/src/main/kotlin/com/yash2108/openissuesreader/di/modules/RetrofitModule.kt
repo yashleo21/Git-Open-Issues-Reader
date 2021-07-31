@@ -1,18 +1,15 @@
-package com.yash2108.openissuesreader.network.di
+package com.yash2108.openissuesreader.di.modules
 
-import android.app.Application
 import com.squareup.moshi.Moshi
-import com.yash2108.openissuesreader.application.MyApplication
 import com.yash2108.openissuesreader.network.service.RetrofitAPI
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Inject
 import javax.inject.Singleton
 
-@Module
+@Module(includes = arrayOf(OkHttpClientModule::class))
 class RetrofitModule constructor() {
 
     @Provides
