@@ -9,4 +9,9 @@ class HomeLocalDataSourceImpl @Inject constructor(val dao: HomeDao): HomeDataSou
     override suspend fun getData(): List<HomeDataObject> {
         return dao.getAllRecords()
     }
+
+    override suspend fun getCommentsData(url: String): List<DetailDataObject> {
+        //Not implemented
+        return emptyList()
+    }
 }

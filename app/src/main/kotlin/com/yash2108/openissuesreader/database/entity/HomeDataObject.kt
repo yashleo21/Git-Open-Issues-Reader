@@ -21,7 +21,9 @@ data class HomeDataObject(
     @field:Json(name = "updated_at")
     var updated_at: String?,
     @field:Json(name = "user")
-    var user: User?
+    var user: User?,
+    @field:Json(name = "comments_url")
+    var comments_url: String?,
 ) {
     data class User(
         @ColumnInfo(name = "username")

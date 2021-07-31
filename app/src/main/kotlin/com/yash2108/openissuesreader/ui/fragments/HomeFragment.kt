@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
+import com.yash2108.openissuesreader.R
 import com.yash2108.openissuesreader.adapters.HomeAdapter
 import com.yash2108.openissuesreader.database.entity.HomeDataObject
 import com.yash2108.openissuesreader.databinding.FragmentHomeBinding
@@ -78,6 +81,7 @@ class HomeFragment: Fragment(), HomeAdapter.Callback {
     }
 
     private fun updateAdapter(data: List<HomeDataObject>) {
+        Log.d(TAG, "Update adapter called")
         adapter.submitList(data.toList())
     }
 
@@ -86,6 +90,10 @@ class HomeFragment: Fragment(), HomeAdapter.Callback {
     }
 
     override fun onItemClicked(data: HomeDataObject, position: Int, transitionView: View) {
-        Log.d(TAG, "Item clicked")
+        viewModel.currentIssue = data
+        activity?.supportFragmentManager?.commit {
+            add<DetailFragment>(R.id.fragment_containing_view)
+            addToBackStack("detailFragment")
+        }
     }
 }

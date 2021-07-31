@@ -33,17 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        testData()
         inflateFragment()
-    }
-
-    private fun testData() {
-        Log.d(TAG, "${viewmodel.test}")
     }
 
     private fun inflateFragment() {
         supportFragmentManager.commit {
             add<HomeFragment>(R.id.fragment_containing_view)
+            addToBackStack("homeFragment")
         }
     }
 }

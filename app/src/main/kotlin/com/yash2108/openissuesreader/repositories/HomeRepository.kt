@@ -3,6 +3,7 @@ package com.yash2108.openissuesreader.repositories
 import android.util.Log
 import com.yash2108.openissuesreader.database.dao.HomeDao
 import com.yash2108.openissuesreader.database.entity.HomeDataObject
+import com.yash2108.openissuesreader.models.DetailDataObject
 import com.yash2108.openissuesreader.models.HomeDataSource
 import com.yash2108.openissuesreader.models.ResultUI
 import kotlinx.coroutines.flow.Flow
@@ -25,6 +26,15 @@ class HomeRepository constructor(private val localDataSource: HomeDataSource,
                 dao.deleteAllRcords()
                 dao.insertAllRecords(result)
             }
+
+            emit(ResultUI.success(result))
+        }
+    }
+
+    suspend fun getComments(url: String): Flow<ResultUI<List<DetailDataObject>>> {
+        return flow {
+            emit(ResultUI.loading())
+            val result = remoteDataSource.getCommentsData(url)
 
             emit(ResultUI.success(result))
         }

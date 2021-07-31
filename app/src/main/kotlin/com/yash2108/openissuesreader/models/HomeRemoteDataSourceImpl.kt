@@ -12,16 +12,8 @@ class HomeRemoteDataSourceImpl @Inject constructor(val client: RetrofitAPI): Hom
         return client.getIssuesList()
     }
 
-    private suspend fun <T> getResponse(request: suspend () -> Response<T>, defaultErrorMessage: String): Result<T> {
-        return try {
-            val result = request.invoke()
-            if (result.isSuccessful) {
-                return Result.success(result.body()!!)
-            } else {
-                Result.error(JSONException(defaultErrorMessage))
-            }
-        } catch (e: Throwable) {
-            Result.error(SocketTimeoutException(defaultErrorMessage))
-        }
+    override suspend fun getCommentsData(url: String): List<DetailDataObject> {
+        return client.getComments(url)
     }
+
 }
