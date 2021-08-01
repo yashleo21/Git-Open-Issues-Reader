@@ -92,7 +92,7 @@ class HomeFragment: Fragment(), HomeAdapter.Callback {
     override fun onItemClicked(data: HomeDataObject, position: Int, transitionView: View) {
         viewModel.currentIssue = data
         activity?.supportFragmentManager?.commit {
-            add<DetailFragment>(R.id.fragment_containing_view)
+            replace(R.id.fragment_containing_view, DetailFragment())
             addToBackStack("detailFragment")
         }
     }
