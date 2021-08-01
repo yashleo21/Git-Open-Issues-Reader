@@ -14,3 +14,4 @@ Tools & technologies used:
     Dependencies organized centrally
     Network library: Retrofit
     Image library: Glide
+    Offline support using Room DB
